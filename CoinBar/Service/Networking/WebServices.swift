@@ -14,7 +14,7 @@ enum CoinWebService: WebService {
 
     var base: String  {
         switch self {
-        case .coinImage: return "https://files.coinmarketcap.com/"
+        case .coinImage: return "https://s2.coinmarketcap.com/"
         default: return "https://api.coinmarketcap.com/v1/"
         }
     }

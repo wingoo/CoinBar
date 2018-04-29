@@ -21,7 +21,13 @@ final class ImagesService: ImagesServiceProtocol {
             return
         }
         
-        let service = CoinWebService.coinImage(id: coin.id)
+        let imageIDs = ["bitcoin":"1","ethereum":"1027","ripple":"52","eos":"1765","huobi-token":"2502","iostoken":"2405"] as [String:String]
+        var imgID = imageIDs[coin.id];
+        if imgID == nil{
+            imgID = "1"
+        }
+        
+        let service = CoinWebService.coinImage(id: imgID!)
         
         networking.getData(at: service) { [weak self] result in
             guard let data = result.value,
