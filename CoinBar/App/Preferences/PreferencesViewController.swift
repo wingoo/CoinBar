@@ -160,8 +160,8 @@ final class PreferencesViewController: NSViewController {
                 textField.stringValue
                     .replacingOccurrences(of: " ", with: "")
                     .components(separatedBy: ",")
-                    .flatMap(self.service.coinsService.getCoin)
-                    .flatMap { Holding(coin: $0, quantity: 0.0) }
+                    .compactMap(self.service.coinsService.getCoin)
+                    .compactMap { Holding(coin: $0, quantity: 0.0) }
                     .forEach(self.service.preferencesService.addHolding)
                 
             default:

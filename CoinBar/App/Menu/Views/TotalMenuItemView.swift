@@ -7,9 +7,9 @@ final class TotalMenuItemView: MenuItemView, NibLoadable {
     func configureWithHoldings(_ holdings: [Holding], currency: Preferences.Currency) {
         let totals: [Double] = {
             switch currency {
-            case .bitcoin: return holdings.flatMap({ $0.totalBTC })
-            case .unitedStatesDollar: return holdings.flatMap({ $0.totalUSD })
-            default: return holdings.flatMap({ $0.totalPreferred })
+            case .bitcoin: return holdings.compactMap({ $0.totalBTC })
+            case .unitedStatesDollar: return holdings.compactMap({ $0.totalUSD })
+            default: return holdings.compactMap({ $0.totalPreferred })
             }
         }()
         

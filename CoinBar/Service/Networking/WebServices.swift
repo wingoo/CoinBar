@@ -21,7 +21,7 @@ enum CoinWebService: WebService {
     
     var endpoint: String {
         switch self {
-        case .all(let currencyCode): return "ticker?convert=\(currencyCode)"
+        case .all(let currencyCode): return "ticker/?limit=200&convert=\(currencyCode)"
         case .coin(let id): return "ticker/\(id)"
         case .coinImage(let id): return "static/img/coins/32x32/\(id).png"
         }

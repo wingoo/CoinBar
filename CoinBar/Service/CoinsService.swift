@@ -70,7 +70,7 @@ final class CoinsService: CoinsServiceProtocol {
 
             // Update existing holdings
             strongSelf.persistence.writePreferences {
-                let updatedHoldings: [Holding] = $0.holdings.flatMap { holding in
+                let updatedHoldings: [Holding] = $0.holdings.compactMap { holding in
                     guard let coin = coins.first(where: { holding.coin.id == $0.id }) else { return nil }
                     return Holding(coin: coin, quantity: holding.quantity)
                 }
